@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+
+:root {
+  color-scheme: light;
+  --paper: #f7eee8;
+  --ink: #352b29;
+  --muted: #897c76;
+  --rose: #bd6676;
+  --rose-deep: #9f4c5d;
+  --line: #dfcec4;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', 'Trebuchet MS', sans-serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 12% 18%, rgba(226, 168, 155, .21), transparent 34%),
+    radial-gradient(ellipse at 90% 82%, rgba(191, 207, 181, .23), transparent 34%),
+    repeating-linear-gradient(0deg, rgba(94, 67, 51, .018) 0, rgba(94, 67, 51, .018) 1px, transparent 1px, transparent 4px),
+    var(--paper);
+  font-family: var(--sans);
+}
+button { font: inherit; color: inherit; }
+button:focus-visible { outline: 2px solid var(--rose-deep); outline-offset: 4px; }
+.timer-hearts { position: fixed; z-index: 0; inset: 0; overflow: hidden; pointer-events: none; }
+.timer-heart {
+  position: absolute;
+  top: -32px;
+  color: var(--heart-color);
+  font-family: Georgia, serif;
+  font-size: var(--heart-size);
+  opacity: 0;
+  animation: timer-heart-fall var(--heart-duration) linear var(--heart-delay) infinite;
+}
+@keyframes timer-heart-fall {
+  0% { transform: translate3d(0, -6vh, 0) rotate(0); opacity: 0; }
+  12%, 82% { opacity: .22; }
+  100% { transform: translate3d(var(--heart-drift), 112vh, 0) rotate(48deg); opacity: 0; }
+}
+.timer-page { position: relative; z-index: 1; display: grid; min-height: 100vh; min-height: 100svh; place-items: center; padding: 46px 18px 34px; }
+.timer-content { width: min(100%, 590px); text-align: center; animation: arrive .9s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes arrive { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.timer-mark { display: grid; width: 62px; height: 62px; place-content: center; margin: 0 auto 23px; border: 1px solid rgba(189, 102, 118, .58); border-radius: 50%; color: var(--rose-deep); font-family: var(--serif); font-size: 23px; line-height: 1; }
+.timer-mark span { margin-top: 4px; font-family: var(--sans); font-size: 7px; letter-spacing: 1.3px; text-transform: uppercase; }
+.timer-eyebrow { margin: 0 0 13px; color: var(--rose-deep); font-size: 10px; font-weight: 700; letter-spacing: 2px; }
+h1 { margin: 0; font-family: var(--serif); font-size: clamp(39px, 8vw, 58px); font-weight: 500; line-height: 1.12; }
+h1 em { color: var(--rose-deep); font-weight: 500; }
+.timer-copy { margin: 15px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+.countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin: 29px 0 19px; }
+.countdown div { display: grid; gap: 6px; padding: 15px 8px 12px; border-top: 1px solid rgba(189, 102, 118, .45); border-bottom: 1px solid rgba(189, 102, 118, .24); background: rgba(255, 251, 246, .55); }
+.countdown strong { font-family: var(--serif); font-size: clamp(27px, 6vw, 38px); font-weight: 500; font-variant-numeric: tabular-nums; }
+.countdown span { color: var(--muted); font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; }
+.continue-button { display: inline-flex; min-width: 146px; min-height: 45px; align-items: center; justify-content: center; gap: 18px; border: 0; background: var(--ink); color: #fff9f4; font-size: 12px; font-weight: 600; cursor: pointer; transition: background .2s ease, transform .2s ease, opacity .2s ease; }
+.continue-button:hover:not(:disabled) { transform: translateY(-2px); background: var(--rose-deep); }
+.continue-button:disabled { cursor: not-allowed; opacity: .45; }
+.intro-player { display: grid; grid-template-columns: 68px minmax(0, 1fr) auto; align-items: center; gap: 15px; margin-top: 33px; padding: 13px; border: 1px solid rgba(185, 151, 133, .55); background: rgba(255, 251, 246, .82); box-shadow: 0 13px 35px rgba(87, 55, 41, .08); text-align: left; }
+.album-art { position: relative; width: 68px; aspect-ratio: 1; overflow: hidden; background: linear-gradient(145deg, #b7c6ad, #e6c0ad 56%, #b97276); }
+.album-art img { width: 100%; height: 100%; object-fit: cover; }
+.album-art img:not([hidden]) + .album-fallback { display: none; }
+.album-fallback { display: flex; height: 100%; flex-direction: column; justify-content: space-between; padding: 7px 6px; background: linear-gradient(150deg, rgba(195,213,185,.88), rgba(240,217,197,.9) 54%, rgba(182,113,111,.76)); color: #392d29; }
+.album-fallback strong { font-size: 6px; letter-spacing: 1px; }
+.album-fallback span { font-family: var(--serif); font-size: 9px; line-height: 1.1; }
+.intro-meta { display: grid; min-width: 0; gap: 4px; }
+.intro-label { color: var(--rose-deep); font-size: 8px; font-weight: 700; letter-spacing: 1.4px; }
+.intro-meta strong { overflow: hidden; font-family: var(--serif); font-size: 17px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+.intro-artist { color: var(--muted); font-size: 10px; }
+.intro-controls { display: flex; gap: 7px; }
+.intro-controls button { display: grid; width: 37px; height: 37px; place-items: center; border: 1px solid rgba(189, 102, 118, .55); border-radius: 50%; background: transparent; color: var(--rose-deep); cursor: pointer; }
+.intro-controls button:disabled { opacity: .38; cursor: not-allowed; }
+.intro-controls svg { width: 16px; height: 16px; fill: currentColor; }
+.timer-footnote { margin: 16px 0 0; color: var(--muted); font-size: 8px; letter-spacing: 1.8px; }
+
+@media (max-width: 480px) {
+  .timer-page { padding: 34px 15px 25px; }
+  .timer-mark { width: 54px; height: 54px; margin-bottom: 19px; }
+  .timer-eyebrow { font-size: 9px; letter-spacing: 1.7px; }
+  .timer-copy { font-size: 12px; }
+  .countdown { gap: 6px; margin-top: 24px; }
+  .countdown div { padding: 12px 4px 10px; }
+  .countdown span { font-size: 8px; letter-spacing: .8px; }
+  .intro-player { grid-template-columns: 56px minmax(0, 1fr) auto; gap: 10px; margin-top: 26px; padding: 10px; }
+  .album-art { width: 56px; }
+  .intro-meta strong { font-size: 15px; }
+  .intro-controls { gap: 4px; }
+  .intro-controls button { width: 33px; height: 33px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

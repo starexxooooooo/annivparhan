@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6e9e3">
+  <meta name="description" content="Perayaan kecil untuk satu tahun bersama.">
+  <title>Satu Tahun, Kita</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="heart-rain" aria-hidden="true"></div>
+
+  <main class="story" aria-live="polite">
+    <section class="screen is-active" id="wishes-screen" aria-labelledby="wishes-title">
+      <div class="intro-mark" aria-hidden="true">1 <span>tahun</span></div>
+      <p class="eyebrow">UNTUK KITA, HARI INI DAN NANTI</p>
+      <h1 id="wishes-title">Satu tahun,<br><em>dan masih kamu.</em></h1>
+      <p class="screen-note">Sebelum lanjut, titipkan satu harapan kecil untuk perjalanan kita.</p>
+
+      <form class="wish-form" id="wish-form">
+        <label for="wish-input">Harapan untuk hubungan kita ke depannya</label>
+        <textarea id="wish-input" name="wish" rows="4" placeholder="Tulis dari hati, ya..." required></textarea>
+        <div class="form-bottom">
+          <span class="form-hint">Tulis sesuatu dulu, baru kita lanjut.</span>
+          <button class="button button--dark" type="submit">Submit <span aria-hidden="true">&#8594;</span></button>
+        </div>
+      </form>
+      <p class="small-note">DIBUAT DENGAN SAYANG, KHUSUS UNTUK KAMU</p>
+    </section>
+
+    <section class="screen" id="letter-screen" aria-labelledby="letter-title" aria-hidden="true" inert>
+      <p class="eyebrow">ADA SEPOTONG HATI DI SINI</p>
+      <h2 id="letter-title">Sebuah surat <em>untukmu.</em></h2>
+      <p class="screen-note">Ketuk amplopnya, ya.</p>
+
+      <button class="envelope" id="envelope-button" type="button" aria-label="Buka surat">
+        <span class="envelope-letter" aria-hidden="true"></span>
+        <span class="envelope-flap" aria-hidden="true"></span>
+        <span class="envelope-front" aria-hidden="true"></span>
+        <span class="envelope-seal" aria-hidden="true">&hearts;</span>
+      </button>
+      <article class="letter-paper" id="letter-paper" aria-hidden="true">
+        <p class="letter-kicker">UNTUK SAYANGKU,</p>
+        <p>Happy 1st anniversary bb, so lucky to have you in my life. I never expected that i can meet someone like you in this life, i know sometimes i can make a mistake but i'm so gratefully to have soulmate who always forgive me. I still remember how we first meet before we love each other. I love you and it wouldn't stop</p>
+        <span class="letter-heart" aria-hidden="true">&hearts;</span>
+      </article>
+      <button class="button button--dark next-button" id="letter-next" type="button" disabled>Next <span aria-hidden="true">&#8594;</span></button>
+    </section>
+
+    <section class="screen bouquet-screen" id="bouquet-screen" aria-labelledby="bouquet-title" aria-hidden="true" inert>
+      <div class="bouquet-heading">
+        <p class="eyebrow">PILIH BUNGA UNTUKKU</p>
+        <h2 id="bouquet-title">Satu bunga,<br><em>satu pap.</em></h2>
+        <p class="screen-note">Rangkai buket kecilmu. Boleh pilih lebih dari satu.</p>
+      </div>
+
+      <div class="flower-layout">
+        <div class="flower-options" aria-label="Pilihan bunga">
+          <button class="flower-option" type="button" data-flower="mawar" aria-label="Tambah mawar ke buket">
+            <span class="flower-art flower-art--rose" aria-hidden="true">&#10047;</span>
+            <span class="flower-name">Mawar</span>
+            <span class="flower-price">satu bunga bayar dengan satu pap</span>
+          </button>
+          <button class="flower-option" type="button" data-flower="tulip" aria-label="Tambah tulip ke buket">
+            <span class="flower-art flower-art--tulip" aria-hidden="true">&#10048;</span>
+            <span class="flower-name">Tulip</span>
+            <span class="flower-price">satu bunga bayar dengan satu pap</span>
+          </button>
+          <button class="flower-option" type="button" data-flower="matahari" aria-label="Tambah bunga matahari ke buket">
+            <span class="flower-art flower-art--sunflower" aria-hidden="true">&#10047;</span>
+            <span class="flower-name">Matahari</span>
+            <span class="flower-price">satu bunga bayar dengan satu pap</span>
+          </button>
+          <button class="flower-option" type="button" data-flower="edelweis" aria-label="Tambah edelweis ke buket">
+            <span class="flower-art flower-art--edelweiss" aria-hidden="true">&#10043;</span>
+            <span class="flower-name">Edelweis</span>
+            <span class="flower-price">satu bunga bayar dengan satu pap</span>
+          </button>
+          <button class="flower-option" type="button" data-flower="lily" aria-label="Tambah lily ke buket">
+            <span class="flower-art flower-art--lily" aria-hidden="true">&#10046;</span>
+            <span class="flower-name">Lily</span>
+            <span class="flower-price">satu bunga bayar dengan satu pap</span>
+          </button>
+        </div>
+
+        <aside class="bouquet-panel" aria-label="Buket pilihanmu">
+          <p class="bouquet-label">BUKET KITA</p>
+          <div class="bouquet-scene">
+            <div class="bouquet-flowers" id="bouquet-flowers" aria-hidden="true"></div>
+            <div class="bouquet-wrap" aria-hidden="true"></div>
+            <div class="bouquet-ribbon" aria-hidden="true"><span></span></div>
+          </div>
+          <p class="bouquet-empty" id="bouquet-empty">Bunga pilihanmu akan muncul di sini</p>
+          <ul class="bouquet-list" id="bouquet-list" aria-label="Isi buket"></ul>
+          <p class="payment-count" id="payment-count" aria-live="polite">PILIH BUNGA DULU</p>
+          <button class="button button--dark finish-button" id="finish-button" type="button" disabled>Lanjut <span aria-hidden="true">&#8594;</span></button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="screen final-screen" id="final-screen" aria-labelledby="final-title" aria-hidden="true" inert>
+      <p class="eyebrow">MASIH ADA BANYAK CERITA</p>
+      <h2 id="final-title">Untuk semua <em>yang sudah kita lalui.</em></h2>
+      <p class="screen-note">Terima kasih sudah menjadi rumah paling hangat.</p>
+      <div class="memory-gallery" aria-label="Foto-foto kenangan">
+        <img class="memory-photo" src="r1.jpeg" alt="Kenangan kita 1">
+        <img class="memory-photo" src="r2.jpeg" alt="Kenangan kita 2">
+        <img class="memory-photo" src="r3.jpeg" alt="Kenangan kita 3">
+        <img class="memory-photo" src="r4.jpeg" alt="Kenangan kita 4">
+        <img class="memory-photo" src="r5.jpeg" alt="Kenangan kita 5">
+        <img class="memory-photo" src="r6.jpeg" alt="Kenangan kita 6">
+        <img class="memory-photo" src="r7.jpeg" alt="Kenangan kita 7">
+      </div>
+      <button class="button button--dark return-button" id="return-button" type="button">Kembali ke awal <span aria-hidden="true">&#8594;</span></button>
+    </section>
+  </main>
+
+  <footer class="music-player" aria-label="Pemutar musik">
+    <div class="album-cover" aria-label="Sampul Terbuang Dalam Waktu oleh Barasuara">
+      <img id="album-image" alt="Sampul lagu Terbuang Dalam Waktu oleh Barasuara" hidden>
+      <span class="album-fallback" aria-hidden="true"><span>BARASUARA</span><strong>Terbuang<br>Dalam Waktu</strong></span>
+    </div>
+    <div class="track-info">
+      <span class="track-title">Terbuang Dalam Waktu</span>
+      <span class="track-artist">Barasuara</span>
+    </div>
+    <div class="track-progress" aria-hidden="true"><span></span></div>
+    <button class="player-toggle" id="player-toggle" type="button" aria-label="Putar Terbuang Dalam Waktu" title="Putar / jeda">
+      <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.8c0-.8.9-1.3 1.6-.8l9.1 6.2a1 1 0 0 1 0 1.6l-9.1 6.2c-.7.5-1.6 0-1.6-.8V5.8Z"/></svg>
+      <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.7v14H7zM13.3 5H17v14h-3.7z"/></svg>
+    </button>
+    <audio id="love-song" preload="auto" loop>
+      <source src="terbuang%20dalam%20waktu.mpeg" type="audio/mpeg">
+    </audio>
+  </footer>
+</body>
+</html>
